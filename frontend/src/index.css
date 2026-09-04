@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ────────────────────────────────────────────── */
+:root {
+  /* Government Orange/Saffron palette */
+  --gov-orange:     #C8500A;
+  --gov-orange-dk:  #A03E08;
+  --gov-orange-lt:  #E06020;
+  --gov-orange-bg:  rgba(200,80,10,0.08);
+
+  /* Government Navy/Blue palette */
+  --gov-navy:       #1B3A6B;
+  --gov-navy-dk:    #122A52;
+  --gov-navy-lt:    #2A5298;
+  --gov-navy-bg:    rgba(27,58,107,0.08);
+
+  /* Government Brown (nav bar) */
+  --gov-brown:      #7B3200;
+  --gov-brown-dk:   #5A2500;
+
+  /* Background */
+  --gov-bg:         #EEF4F8;
+  --gov-bg-card:    #FFFFFF;
+  --gov-bg-section: #DAE8F2;
+
+  /* Text */
+  --gov-text:       #222222;
+  --gov-text-md:    #444444;
+  --gov-text-lt:    #666666;
+  --gov-text-inv:   #FFFFFF;
+
+  /* Border */
+  --gov-border:     #D0DCEB;
+  --gov-border-dk:  #B0C4D8;
+
+  /* Dashboard dark mode vars (for inner DSS) */
+  --ts-base:      #080D18;
+  --ts-surf-0:    #0D1425;
+  --ts-surf-1:    #121C30;
+  --ts-surf-2:    #172236;
+  --ts-border:    rgba(255,255,255,0.07);
+  --ts-border-md: rgba(255,255,255,0.13);
+  --ts-amber:     #C9861A;
+  --ts-red:       #B83232;
+  --ts-teal:      #2A7F76;
+  --ts-cyan:      #3EA8C4;
+  --ts-t100:      rgba(255,255,255,0.92);
+  --ts-t60:       rgba(255,255,255,0.60);
+  --ts-t35:       rgba(255,255,255,0.35);
+  --ts-t20:       rgba(255,255,255,0.18);
+}
+
+/* ── Base Reset ───────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing:border-box; }
+html { font-size:14px; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; scroll-behavior:smooth; }
+body { background:var(--gov-bg); color:var(--gov-text); font-family:'IBM Plex Sans',Inter,sans-serif; margin:0; padding:0; }
+::selection { background:rgba(200,80,10,0.2); }
+
+/* ── Scrollbars ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:var(--gov-bg); }
+::-webkit-scrollbar-thumb { background:var(--gov-border-dk); }
+::-webkit-scrollbar-thumb:hover { background:var(--gov-orange); }
+
+/* ── Government Portal Components ────────────────────────────── */
+.gov-top-bar {
+  background:#fff;
+  border-bottom:1px solid var(--gov-border);
+  height:36px;
+  display:flex;
+  align-items:center;
+}
+
+.gov-header {
+  background:linear-gradient(135deg, #8B4513 0%, #C8500A 40%, #D4650F 60%, #8B4513 100%);
+  min-height:100px;
+}
+
+.gov-ticker {
+  background:var(--gov-orange);
+  color:#fff;
+  height:32px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+
+.gov-navbar {
+  background:var(--gov-brown);
+}
+.gov-nav-link {
+  color:rgba(255,255,255,0.90);
+  font-size:12.5px;
+  font-weight:500;
+  padding:8px 14px;
+  display:inline-block;
+  transition:background 0.15s, color 0.15s;
+  cursor:pointer;
+  border:none;
+  background:transparent;
+  white-space:nowrap;
+}
+.gov-nav-link:hover { background:rgba(255,255,255,0.12); color:#fff; }
+.gov-nav-link.active { background:var(--gov-orange); color:#fff; }
+
+.gov-section-title {
+  color:var(--gov-orange);
+  font-size:16px;
+  font-weight:700;
+  border-bottom:2px solid var(--gov-orange);
+  padding-bottom:6px;
+  margin-bottom:14px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+
+.gov-card {
+  background:#fff;
+  border:1px solid var(--gov-border);
+  border-radius:4px;
+  overflow:hidden;
+}
+
+.gov-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 18px;
+  background:var(--gov-orange);
+  color:#fff;
+  border:none;
+  border-radius:3px;
+  font-size:12.5px;
+  font-weight:600;
+  cursor:pointer;
+  transition:background 0.15s;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.gov-btn:hover { background:var(--gov-orange-dk); }
+
+.gov-btn-navy {
+  background:var(--gov-navy);
+}
+.gov-btn-navy:hover { background:var(--gov-navy-dk); }
+
+.gov-link-item {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-bottom:1px solid var(--gov-border);
+  background:#fff;
+  transition:background 0.12s;
+  cursor:pointer;
+  color:var(--gov-navy);
+  font-size:12.5px;
+  font-weight:500;
+}
+.gov-link-item:hover { background:var(--gov-nav-bg, #f0f6fb); }
+.gov-link-item:last-child { border-bottom:none; }
+
+/* ── Login Page ───────────────────────────────────────────────── */
+.login-card {
+  background:#fff;
+  border:1px solid var(--gov-border-dk);
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.12);
+}
+
+.login-input {
+  width:100%;
+  border:1px solid var(--gov-border-dk);
+  border-radius:3px;
+  padding:9px 12px;
+  font-size:13px;
+  font-family:'IBM Plex Sans',sans-serif;
+  color:var(--gov-text);
+  background:#fff;
+  outline:none;
+  transition:border-color 0.15s;
+}
+.login-input:focus { border-color:var(--gov-orange); }
+
+/* ── Dashboard dark theme (inner app) ────────────────────────── */
+.dss-root { background:var(--ts-base); color:var(--ts-t100); }
+
+.font-data { font-family:'IBM Plex Mono',monospace; font-feature-settings:'tnum' 1; }
+
+.ts-card { background:var(--ts-surf-0); border:1px solid var(--ts-border); border-radius:3px; }
+.ts-card-raised { background:var(--ts-surf-1); border:1px solid var(--ts-border); border-radius:3px; }
+
+.ts-badge { display:inline-flex; align-items:center; padding:1px 6px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; border-radius:2px; white-space:nowrap; }
+.ts-badge-critical  { background:rgba(184,50,50,0.18);  color:#E05555; border:1px solid rgba(184,50,50,0.32); }
+.ts-badge-high      { background:rgba(201,134,26,0.18); color:#D4922A; border:1px solid rgba(201,134,26,0.32); }
+.ts-badge-medium    { background:rgba(62,168,196,0.12); color:#4BAFCC; border:1px solid rgba(62,168,196,0.25); }
+.ts-badge-low       { background:rgba(42,127,118,0.15); color:#3AA496; border:1px solid rgba(42,127,118,0.28); }
+.ts-badge-safe      { background:rgba(42,127,118,0.15); color:#3AA496; border:1px solid rgba(42,127,118,0.28); }
+.ts-badge-immediate { background:rgba(120,20,20,0.28);  color:#D44040; border:1px solid rgba(160,30,30,0.38); }
+.ts-badge-short     { background:rgba(100,70,10,0.25);  color:#C99025; border:1px solid rgba(140,100,20,0.38); }
+.ts-badge-medium-t  { background:rgba(20,40,70,0.40);   color:#6A90B8; border:1px solid rgba(40,70,110,0.40); }
+
+.nav-item { display:flex; align-items:center; gap:10px; padding:7px 10px; font-size:12.5px; font-weight:500; color:var(--ts-t35); border-radius:3px; cursor:pointer; transition:background 0.12s,color 0.12s; white-space:nowrap; overflow:hidden; border-left:2px solid transparent; background:none; border-right:none; border-top:none; border-bottom:none; text-align:left; width:100%; }
+.nav-item:hover { background:rgba(255,255,255,0.04); color:var(--ts-t60); border-left-color:rgba(255,255,255,0.12); }
+.nav-item.active { background:rgba(201,134,26,0.08); color:var(--ts-t100); border-left-color:var(--ts-amber); }
+
+.ts-btn { display:inline-flex; align-items:center; gap:5px; padding:5px 11px; font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:500; border-radius:3px; border:1px solid var(--ts-border-md); background:rgba(255,255,255,0.04); color:var(--ts-t60); cursor:pointer; transition:background 0.12s,color 0.12s,border-color 0.12s; white-space:nowrap; }
+.ts-btn:hover { background:rgba(255,255,255,0.07); color:var(--ts-t100); border-color:rgba(255,255,255,0.18); }
+.ts-btn-amber { border-color:rgba(201,134,26,0.35); color:#DBA040; background:rgba(201,134,26,0.08); }
+.ts-btn-amber:hover { background:rgba(201,134,26,0.14); border-color:rgba(201,134,26,0.55); }
+.ts-btn-ghost { background:transparent; border-color:transparent; }
+.ts-btn-ghost:hover { background:rgba(255,255,255,0.05); border-color:var(--ts-border); }
+
+.ts-table { width:100%; border-collapse:collapse; font-size:12px; }
+.ts-table th { background:var(--ts-surf-1); color:var(--ts-t35); font-weight:500; letter-spacing:0.06em; text-transform:uppercase; font-size:9.5px; padding:8px 12px; text-align:left; border-bottom:1px solid var(--ts-border); white-space:nowrap; }
+.ts-table td { padding:9px 12px; border-bottom:1px solid var(--ts-border); color:var(--ts-t60); vertical-align:middle; }
+.ts-table tr:hover td { background:rgba(255,255,255,0.025); color:var(--ts-t100); cursor:pointer; }
+.ts-table tr:last-child td { border-bottom:none; }
+
+.ts-input { background:var(--ts-surf-1); border:1px solid var(--ts-border-md); border-radius:3px; color:var(--ts-t100); font-size:12.5px; padding:5px 10px; outline:none; transition:border-color 0.12s; font-family:'IBM Plex Sans',sans-serif; width:100%; }
+.ts-input::placeholder { color:var(--ts-t20); }
+.ts-input:focus { border-color:var(--ts-amber); }
+.ts-select { background:var(--ts-surf-1); border:1px solid var(--ts-border-md); border-radius:3px; color:var(--ts-t60); font-size:12px; padding:5px 8px; outline:none; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; }
+.ts-select:focus { border-color:var(--ts-amber); color:var(--ts-t100); }
+
+*:focus-visible { outline:1px solid var(--gov-orange); outline-offset:2px; }
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line { stroke:rgba(255,255,255,0.05) !important; }
+.recharts-text { fill:rgba(255,255,255,0.38) !important; font-size:10px !important; font-family:'IBM Plex Mono',monospace !important; }
+
+.leaflet-container { width:100%; height:100%; background:#111 !important; font-family:'IBM Plex Sans',sans-serif; isolation:isolate; }
+.leaflet-pane { z-index:40 !important; } .leaflet-tile-pane { z-index:20 !important; }
+.leaflet-overlay-pane { z-index:30 !important; } .leaflet-shadow-pane { z-index:35 !important; }
+.leaflet-marker-pane { z-index:38 !important; } .leaflet-tooltip-pane { z-index:42 !important; }
+.leaflet-popup-pane { z-index:44 !important; } .leaflet-control { z-index:50 !important; }
+.leaflet-top,.leaflet-bottom { z-index:50 !important; }
+.leaflet-popup-content-wrapper { background:var(--ts-surf-1) !important; border:1px solid rgba(255,255,255,0.10) !important; color:var(--ts-t100) !important; border-radius:3px !important; box-shadow:0 8px 32px rgba(0,0,0,0.6) !important; }
+.leaflet-popup-tip { background:var(--ts-surf-1) !important; }
+.leaflet-control-zoom { border:1px solid var(--ts-border-md) !important; border-radius:3px !important; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.4) !important; }
+.leaflet-control-zoom a { background:var(--ts-surf-1) !important; color:var(--ts-t35) !important; border-bottom:1px solid var(--ts-border) !important; width:28px !important; height:28px !important; line-height:28px !important; font-size:16px !important; }
+.leaflet-control-zoom a:hover { background:var(--ts-surf-2) !important; color:var(--ts-amber) !important; }
+
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.animate-marquee { animation:marquee 32s linear infinite; }
+@keyframes radar-ping { 0%{transform:scale(0.8);opacity:0.8} 70%{transform:scale(2.2);opacity:0} 100%{transform:scale(2.4);opacity:0} }
+.animate-radar-ping { animation:radar-ping 2s cubic-bezier(0,0,0.2,1) infinite; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.animate-fade-in { animation:fadeIn 0.2s ease-out; }
+
+/* Slider */
+@keyframes slideIn { from{opacity:0;transform:scale(1.03)} to{opacity:1;transform:scale(1)} }
+.slide-animate { animation:slideIn 0.6s ease-out; }
